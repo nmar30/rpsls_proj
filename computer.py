@@ -8,6 +8,5 @@ class Computer(Player):
         self.name = "Computer"
 
     def select_gesture(self):
-        selection = random.randint(0, len(self.gestures)-1)
-        print(f'{self.name} selects {self.gestures.get(selection)}')
-        self.chosen_gesture = selection
+        self.chosen_gesture = random.randint(0, len(self.gestures)-1)
+        print(f'{self.name} selects {self.gestures.get(self.chosen_gesture)}')

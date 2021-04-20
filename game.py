@@ -20,7 +20,7 @@ class Game:
             self.player2.select_gesture()
             self.compare_gestures()
             i += 1
-
+        self.determine_winner()
     def welcome_message(self):
         print('Welcome to Rock, Paper, Scissors, Lizard, Spock')
 
@@ -39,28 +39,18 @@ class Game:
         winner = self.rpsls_table[self.player1.chosen_gesture][self.player2.chosen_gesture]
         # Declare the winner
         if winner == self.player1.chosen_gesture:
+            self.player1.score += 1
             print(self.player1.name, "WINS!!!")
         elif winner == self.player2.chosen_gesture:
+            self.player2.score += 1
             print(self.player2.name, "WINS!!!")
         else:
             print("TIE GAME")
 
-
-        print(f'{self.player1.chosen_gesture} vs. {self.player2.chosen_gesture}')
-        '''
-        if self.player1.chosen_gesture == self.player2.chosen_gesture:
-            print("It's a tie!")
-        elif self.player1.chosen_gesture == 'Rock':
-            if self.player2.chosen_gesture == 'Paper':
-                self.player2.score += 1
-                print(f'Paper covers Rock. {self.player2.name} Wins!')
-            elif self.player2.chosen_gesture == 'Scissors':
-                self.player1.score += 1
-                print(f'Rock smashes Scissors. {self.player1.name} Wins!')
-            elif self.player2.chosen_gesture == 'Lizard':
-                self.player1.score += 1
-                print(f'Rock crushes Lizard. {self.player1.name} Wins!')
-            elif self.player2.chosen_gesture == 'Spock':
-                self.player2.score += 1
-                print(f'Spock vaporizes Rock. {self.player2.name} Wins!')
-        '''
+    def determine_winner(self):
+        if self.player1.score == self.player2.score:
+            print('Tie!')
+        elif self.player1.score > self.player2.score:
+            print(f'{self.player1.name} Wins!')
+        else:
+            print(f'{self.player2.name} Wins!')

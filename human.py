@@ -8,18 +8,18 @@ class Human(Player):
 
     def select_gesture(self):
         print(f'{self.name}s Turn')
-        selection = input("Enter your move: ")
-        selection = selection.lower()
-        if selection == 'rock':
+        user_input = input("Enter your move: ")
+        user_input = user_input.lower()
+        if user_input == 'rock':
             self.chosen_gesture = 0
-        elif selection == 'paper':
+        elif user_input == 'paper':
             self.chosen_gesture = 1
-        elif selection == 'scissors':
+        elif user_input == 'scissors':
             self.chosen_gesture = 2
-        elif selection == 'lizard':
+        elif user_input == 'lizard':
             self.chosen_gesture = 3
-        elif selection == 'spock':
+        elif user_input == 'spock':
             self.chosen_gesture = 4
         else:
             print("Wrong Input!")
-        print(f'{self.name} selects {self.gestures.get(selection)}')
+        print(f'{self.name} selects {self.gestures.get(self.chosen_gesture)}')
