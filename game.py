@@ -4,8 +4,8 @@ from computer import Computer
 
 class Game:
     def __init__(self):
-        self.player1 = self.select_player_type()
-        self.player2 = self.select_player_type()
+        self.player1 = self.select_player_type('1')
+        self.player2 = self.select_player_type('2')
         self.win_matrix = [[-1, 1, 0, 0, 4],
                            [1, -1, 2, 3, 1],
                            [0, 2, -1, 2, 4],
@@ -29,8 +29,8 @@ class Game:
             self.compare_gestures()
             i += 1
 
-    def select_player_type(self):
-        print('Please select a player type! Enter C for Computer or H for Human')
+    def select_player_type(self, player_number):
+        print(f'Please select a player type for Player {player_number}! Enter C for Computer or H for Human')
         while True:
             string = input("Enter Player Type: ")
             string = string.lower()
