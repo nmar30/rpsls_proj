@@ -6,14 +6,14 @@ class Game:
     def __init__(self):
         self.player1 = self.select_player_type()
         self.player2 = self.select_player_type()
-        self.rpsls_table = [[-1, 1, 0, 0, 4],
+        self.win_matrix = [[-1, 1, 0, 0, 4],
                             [1, -1, 2, 3, 1],
                             [0, 2, -1, 2, 4],
                             [0, 3, 2, -1, 3],
                             [4, 1, 4, 3, -1]]
 
-
     def run_game(self):
+        self.same_name_fix()
         i = 0
         while i < 3:
             self.player1.select_gesture()
@@ -21,6 +21,7 @@ class Game:
             self.compare_gestures()
             i += 1
         self.determine_winner()
+
     def welcome_message(self):
         print('Welcome to Rock, Paper, Scissors, Lizard, Spock')
 
@@ -36,21 +37,31 @@ class Game:
             print('Please enter C or H only!')
 
     def compare_gestures(self):
-        winner = self.rpsls_table[self.player1.chosen_gesture][self.player2.chosen_gesture]
-        # Declare the winner
+        winner = self.win_matrix[self.player1.chosen_gesture][self.player2.chosen_gesture]
         if winner == self.player1.chosen_gesture:
             self.player1.score += 1
-            print(self.player1.name, "WINS!!!")
+            print(f'******** {self.player1.name} Wins Round! ********')
         elif winner == self.player2.chosen_gesture:
             self.player2.score += 1
-            print(self.player2.name, "WINS!!!")
+            print(f'******** {self.player2.name} Wins Round! ********')
         else:
-            print("TIE GAME")
+            print("******** Tie Round! ********")
 
     def determine_winner(self):
         if self.player1.score == self.player2.score:
-            print('Tie!')
+            print('--------------------------------')
+            print('           Tie Game             ')
+            print('--------------------------------')
         elif self.player1.score > self.player2.score:
-            print(f'{self.player1.name} Wins!')
+            print('--------------------------------')
+            print(f' {self.player1.name} Wins Game!')
+            print('--------------------------------')
         else:
-            print(f'{self.player2.name} Wins!')
+            print('--------------------------------')
+            print(f' {self.player2.name} Wins Game!        ')
+            print('--------------------------------')
+
+    def same_name_fix (self):
+        if self.player1.name == self.player2.name:
+            self.player1.name += " 1"
+            self.player2.name += " 2"
