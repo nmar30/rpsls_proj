@@ -18,7 +18,7 @@ class Human(Player):
             elif user_input == 'paper':
                 self.chosen_gesture = 1
                 break
-            elif user_input == 'scissors':
+            elif user_input == 'scissor':
                 self.chosen_gesture = 2
                 break
             elif user_input == 'lizard':
