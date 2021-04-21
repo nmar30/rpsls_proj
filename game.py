@@ -15,7 +15,8 @@ class Game:
     def run_game(self):
         self.same_name_fix()
         i = 0
-        while i < 3:
+        j = self.best_of()
+        while i < j:
             self.player1.select_gesture()
             self.player2.select_gesture()
             self.compare_gestures()
@@ -28,7 +29,7 @@ class Game:
     def select_player_type(self):
         print('Please select a player type! Enter C for Computer or H for Human')
         while True:
-            string = input("Enter Player Type:")
+            string = input("Enter Player Type: ")
             string = string.lower()
             if string == 'c':
                 return Computer()
@@ -61,7 +62,18 @@ class Game:
             print(f' {self.player2.name} Wins Game!        ')
             print('--------------------------------')
 
-    def same_name_fix (self):
+    def same_name_fix(self):
         if self.player1.name == self.player2.name:
             self.player1.name += " 1"
             self.player2.name += " 2"
+
+    def best_of(self):
+        while True:
+            try:
+                rounds = int(input("Please enter amount of rounds: "))
+                if rounds >= 3:
+                    return rounds
+                else:
+                    print("Please enter 3 or higher!")
+            except:
+                print("Please enter number only!")

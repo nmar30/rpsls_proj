@@ -7,7 +7,7 @@ class Human(Player):
         self.name = input("Please enter your name: ")
 
     def select_gesture(self):
-        print(f'{self.name}s Turn')
+        print(f'{self.name}'+"'s Turn")
         print('Please enter enter one of the following: Rock | Paper | Scissor | Lizard | Spock')
         while True:
             user_input = input("Enter your move: ")
