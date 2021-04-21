@@ -4,8 +4,8 @@ from computer import Computer
 
 class Game:
     def __init__(self):
-        self.player1 = self.select_player_type('1')
-        self.player2 = self.select_player_type('2')
+        self.player1 = ''
+        self.player2 = ''
         self.win_matrix = [[-1, 1, 0, 0, 4],
                            [1, -1, 2, 3, 1],
                            [0, 2, -1, 2, 4],
@@ -13,12 +13,11 @@ class Game:
                            [4, 1, 4, 3, -1]]
 
     def run_game(self):
+        self.player1 = self.select_player_type('1')
+        self.player2 = self.select_player_type('2')
         self.same_name_fix()
         self.battle()
         self.determine_winner()
-
-    def welcome_message(self):
-        print('Welcome to Rock, Paper, Scissors, Lizard, Spock')
 
     def battle(self):
         i = 0
